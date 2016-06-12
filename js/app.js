@@ -22,30 +22,36 @@ $(document).ready(function(){
   		count++;
   		$('#count').text(count);
   		var userguess = $('#userGuess').val();
-  		$('#guessList').append('<li>' + userguess + '</li>');
   		if (userguess > 100 || userguess < 1) {
   			$('#feedback').text('It\'s between 1 and 100');
   		}
   		else if (userguess == toguess) {
   			$('#feedback').text('Good Job!  Play again!');
+        $('#guessList').append('<li class="onthedot">' + userguess + '</li>');
   		}
   		else if (userguess < toguess && lastguess !=0 && userguess > lastguess) {
   			$('#feedback').text('Getting warmer!  Keep going higher!');
+        $('#guessList').append('<li class="lower">' + userguess + '</li>');
   		}
   		else if (userguess < toguess && lastguess !=0 && userguess < lastguess) {
   			$('#feedback').text('Too low!  Go higher!');
+        $('#guessList').append('<li class="lower">' + userguess + '</li>');
   		}
   		else if (userguess > toguess && lastguess !=0 && userguess > lastguess) {
   			$('#feedback').text('Too high!  Go lower!');
+        $('#guessList').append('<li class="higher">' + userguess + '</li>');
   		}
   		else if (userguess > toguess && lastguess !=0 && userguess < lastguess) {
   			$('#feedback').text('Getting warmer!  Keep going lower!');
+         $('#guessList').append('<li class="higher">' + userguess + '</li>');
   		}
   		else if (userguess < toguess) {
   			$('#feedback').text('Higher!');
+        $('#guessList').append('<li class="lower">' + userguess + '</li>');
   		}
   		else if (userguess > toguess) {
   			$('#feedback').text('Lower!');
+         $('#guessList').append('<li class="higher">' + userguess + '</li>');
   		}
   		lastguess = userguess;
   		return false;
